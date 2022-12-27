@@ -4,12 +4,16 @@ import io.cucumber.java.es.Cuando;
 import io.cucumber.java.es.Dado;
 import io.cucumber.java.es.Entonces;
 import io.cucumber.java.es.Y;
+import io.restassured.http.ContentType;
 import io.restassured.response.Response;
 import io.restassured.specification.RequestSpecification;
+import org.apache.http.HttpStatus;
 import org.junit.jupiter.api.Assertions;
 
 import org.apache.log4j.Logger;
 import stepdefinitions.BasePage;
+
+import static io.restassured.RestAssured.given;
 
 public class GetAllSteps extends BasePage {
 
@@ -17,15 +21,14 @@ public class GetAllSteps extends BasePage {
     private RequestSpecification request;
     private Response response;
 
-    private int codigo = 200;
 
     @Dado("el usuario quiere consultar el listado de libros")
     public void elUsuarioQuiereConsultarElListadoDeLibros() {
         try {
             generalSetUp();
-            request = request.given()
+            request = given()
                     .log()
-                    .all();
+                    .all().contentType(ContentType.ANY);
 
         }catch (Exception e){
             LOGGER.error(e.getMessage(), e);
@@ -49,7 +52,9 @@ public class GetAllSteps extends BasePage {
     @Entonces("el usuario deberia obtener el listado de libros completo")
     public void elUsuarioDeberiaObtenerElListadoDeLibrosCompleto() {
         try {
-            response.then().log().all();
+            response.then()
+                    .log()
+                    .body();
             LOGGER.info("Se obtiene el listado completo de libros");
         }catch (Exception e){
             LOGGER.error(e.getMessage(), e);
@@ -59,9 +64,12 @@ public class GetAllSteps extends BasePage {
 
     @Y("un codigo de respuesta {int}")
     public void unCodigoDeRespuesta(int respuesta) {
+        respuesta = HttpStatus.SC_OK;
         try {
-            respuesta = codigo;
-            response.then().log().all().statusCode(respuesta);
+            response.then()
+                    .log()
+                    .all()
+                    .statusCode(respuesta);
             LOGGER.info("Se obtiene el status code 200 esperado");
         }catch (Exception e){
             LOGGER.error(e.getMessage(), e);
