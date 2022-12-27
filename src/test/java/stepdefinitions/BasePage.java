@@ -29,7 +29,6 @@ public class BasePage {
 
     public void configurationForRestAssured(){
         RestAssured.baseURI = BASE_URL;
-        RestAssured.basePath = BASE_PATH;
         //RestAssured.requestSpecification = new RequestSpecBuilder()
                // .setContentType(ContentType.JSON).build();
     }

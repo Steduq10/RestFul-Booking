@@ -47,3 +47,6 @@ java.lang.NullPointerException
 [2022-12-27 12:05:12][INFO ] [GetAllSteps:45] Se hace la peticion para obtener el listado de libros
 [2022-12-27 12:05:12][INFO ] [GetAllSteps:58] Se obtiene el listado completo de libros
 [2022-12-27 12:05:13][INFO ] [GetAllSteps:73] Se obtiene el status code 200 esperado
+[2022-12-27 12:33:13][INFO ] [AuthSteps:37] Se ingresan las credenciales para iniciar sesion
+[2022-12-27 12:33:17][INFO ] [AuthSteps:63] Se obtiene el status code 200 esperado
+[2022-12-27 12:33:18][INFO ] [AuthSteps:77] Se obtiene el token

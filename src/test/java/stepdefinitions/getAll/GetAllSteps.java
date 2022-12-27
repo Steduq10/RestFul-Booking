@@ -41,7 +41,7 @@ public class GetAllSteps extends BasePage {
     public void elUsuarioHaceLaPeticionDeObtenerElListadoDeLibrosCompleto() {
         try {
             response = request.when()
-                                .get();
+                                .get(BASE_PATH);
             LOGGER.info("Se hace la peticion para obtener el listado de libros");
         }catch (Exception e){
             LOGGER.error(e.getMessage(), e);
