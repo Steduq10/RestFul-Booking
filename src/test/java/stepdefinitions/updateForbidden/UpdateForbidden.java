@@ -70,6 +70,7 @@ public class UpdateForbidden extends BasePage {
                     .log()
                     .all()
                     .statusCode(respuesta);
+
             LOGGER.info("Se obtiene el status code 403 Forbidden esperado");
         }catch (Exception e){
             LOGGER.error(e.getMessage(), e);

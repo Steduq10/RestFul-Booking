@@ -15,7 +15,7 @@ public class BasePage {
 
     protected static final String AUTH= "/auth";
 
-    protected static final String PING = "/ping";
+
     protected static final String UPDATE = "/booking/927";
 
 
